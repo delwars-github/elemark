@@ -5,7 +5,7 @@ const API_STORAGE_KEY = '@voltmart_custom_api_url';
 
 // Default endpoints: Live Render Cloud API is primary, followed by Android Emulator & LAN fallbacks
 const DEFAULT_URLS = [
-  'https://elemark-api.onrender.com/api',
+  'https://elemark-api-1.onrender.com/api',
   'http://10.0.2.2:5000/api',
   'http://192.168.0.100:5000/api',
   'http://localhost:5000/api',
@@ -17,8 +17,9 @@ export const getApiUrl = async (): Promise<string> => {
   try {
     const saved = await AsyncStorage.getItem(API_STORAGE_KEY);
     if (saved) {
-      activeApiUrl = saved;
-      return saved;
+      const sanitized = saved.replace('elemark-api.onrender.com', 'elemark-api-1.onrender.com');
+      activeApiUrl = sanitized;
+      return sanitized;
     }
   } catch (e) {
     // ignore
