@@ -3,9 +3,9 @@ import { Product, Order, LedgerEntry, User } from '../types';
 
 const API_STORAGE_KEY = '@voltmart_custom_api_url';
 
-// Default endpoints depending on environment
-// 10.0.2.2 for Android Emulator, 192.168.0.100 for local network/physical device, localhost for web
+// Default endpoints: Live Render Cloud API is primary, followed by Android Emulator & LAN fallbacks
 const DEFAULT_URLS = [
+  'https://elemark-api.onrender.com/api',
   'http://10.0.2.2:5000/api',
   'http://192.168.0.100:5000/api',
   'http://localhost:5000/api',
